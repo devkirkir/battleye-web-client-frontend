@@ -1,3 +1,3 @@
-import UIButton from "./UI-Button.vue";
+import UIButton from "./UIButton.vue";
 
 export default [UIButton];

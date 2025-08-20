@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { LoginView } from "@auth";
+let q;
 </script>
 
 <template>
-  <LoginView />
+  <span>Login View</span>
 </template>
 
 <style scoped></style>

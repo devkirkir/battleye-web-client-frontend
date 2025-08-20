@@ -1,8 +1,7 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'UI-Button'
-})
-
+  name: "UIButton",
+});
 </script>
 
 <template>
