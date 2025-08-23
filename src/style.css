@@ -1,3 +1,50 @@
+:root {
+  --bg-color: #000;
+  --bg-color-secondary: #101010;
+
+  --bg-color-hover: #202020;
+
+  --text-color: #dcdcdc;
+  --text-color-secondary: #3b3b3b;
+
+  --outline: #3b3b3b;
+
+  --error-color: #ff5959;
+
+  --border-radius-md: 6px;
+
+  --gap-md: 16px;
+}
+
 * {
+  font-family: "Ubuntu Mono", Arial, sans-serif;
+  font-size: 100%;
+
+  &:focus {
+    outline: 1px solid var(--outline);
+  }
+
   box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg-color);
+}
+
+.ubuntu-mono-regular {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ubuntu-mono-bold {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ubuntu-mono-regular-italic {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
 }

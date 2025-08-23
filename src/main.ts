@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
-import { vAnimatedPlaceholder } from "@core/directives/vAnimatedPlaceholder";
+import { vAnimatedPlaceholder } from "./directives/vAnimatedPlaceholder";
 
 const app = createApp(App);
 

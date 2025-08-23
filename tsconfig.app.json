@@ -10,10 +10,10 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@core/*": ["src/core/*"],
-      "@auth": ["src/modules/auth/index.ts"]
+      "@core/*": ["core/*"],
+      "@auth": ["modules/auth/index.ts"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]

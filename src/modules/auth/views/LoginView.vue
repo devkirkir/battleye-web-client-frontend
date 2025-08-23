@@ -3,7 +3,16 @@ import LoginForm from "../components/LoginForm.vue";
 </script>
 
 <template>
-  <LoginForm />
+  <section>
+    <LoginForm />
+  </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+section {
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100vh;
+}
+</style>
