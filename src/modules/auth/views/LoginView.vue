@@ -1,9 +1,9 @@
 <script setup lang="ts">
-let q;
+import LoginForm from "../components/LoginForm.vue";
 </script>
 
 <template>
-  <span>Login View</span>
+  <LoginForm />
 </template>
 
 <style scoped></style>

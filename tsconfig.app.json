@@ -12,6 +12,7 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
+      "@core/*": ["src/core/*"],
       "@auth": ["src/modules/auth/index.ts"]
     }
   },

@@ -1,11 +1,13 @@
 <script setup lang="ts">
-defineOptions({
-  name: "UIButton",
-});
+interface Props {
+  type?: "submit" | "button";
+}
+
+const { type = "button" } = defineProps<Props>();
 </script>
 
 <template>
-  <button>
+  <button :type>
     <slot />
   </button>
 </template>

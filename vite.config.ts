@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
+      "@core": fileURLToPath(new URL("./src/core", import.meta.url)),
       "@auth": fileURLToPath(new URL("./src/modules/auth", import.meta.url)),
     },
   },
