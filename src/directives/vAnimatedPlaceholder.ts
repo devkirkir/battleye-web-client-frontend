@@ -48,4 +48,9 @@ export const vAnimatedPlaceholder: Directive = {
     input.removeEventListener("focus", el._vAnimatedPlaceholder.onFocus);
     input.removeEventListener("blur", el._vAnimatedPlaceholder.onBlur);
   },
+  updated: (el: HTMLElement, binding) => {
+    if (binding.value) {
+      el.classList.add("placeholder-active");
+    }
+  },
 };

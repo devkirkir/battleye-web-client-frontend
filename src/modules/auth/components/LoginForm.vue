@@ -1,16 +1,48 @@
 <script setup lang="ts">
 import UIButton from "@core/components/ui/UIButton.vue";
 import UIInput from "@core/components/ui/UIInput.vue";
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
+import api from "@core/services";
+
+interface Errors {
+  [x: string]: string;
+}
 
 const formData = reactive({
-  username: "",
+  username: "admin",
   password: "",
 });
+
+const errors = ref<Errors>({});
+
+const onSubmit = async () => {
+  const res = await api({
+    url: "/auth/login",
+    method: "post",
+    data: formData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((data) => data)
+    .then((data) => console.log(data));
+
+  // await res.json().then((data: ResponseError) => {
+  //   if (!data.success) {
+  //     errors.value.form = data.msg;
+
+  //     if (data.errors?.length) {
+  //       data.errors.forEach((error) => {
+  //         errors.value[error.property!] = error.message;
+  //       });
+  //     }
+  //   }
+  // });
+};
 </script>
 
 <template>
-  <form>
+  <form :class="[{ error: errors['form'] }]" @submit.prevent="onSubmit">
     <h3>Login</h3>
 
     <UIInput
@@ -18,6 +50,7 @@ const formData = reactive({
       type="text"
       name="username"
       placeholder="username"
+      :error-msg="errors.username"
       :is-placeholder-animated="true" />
 
     <UIInput
@@ -25,9 +58,12 @@ const formData = reactive({
       type="password"
       name="password"
       placeholder="password"
+      :error-msg="errors.password"
       :is-placeholder-animated="true" />
 
     <UIButton type="submit">Login</UIButton>
+
+    <span v-if="errors['form']" class="error-msg">{{ errors["form"] }}</span>
 
     <button type="button" class="forgot">I forgot my username or password</button>
   </form>
@@ -41,7 +77,7 @@ form {
   flex-direction: column;
   gap: var(--gap-md);
 
-  border: 1px solid var(--bg-color-secondary);
+  border: 2px solid var(--bg-color-secondary);
 
   padding: 20px;
 

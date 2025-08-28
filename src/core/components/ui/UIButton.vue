@@ -40,5 +40,9 @@ button {
   &:focus {
     border-color: var(--bg-color-secondary);
   }
+
+  &:active {
+    border: 1px solid var(--bg-color-secondary);
+  }
 }
 </style>

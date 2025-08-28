@@ -20,7 +20,7 @@ const placeholderType = computed(() => (props.isPlaceholderAnimated ? undefined 
 
 <template>
   <label>
-    <div v-animated-placeholder :class="[{ disabled: isDisabled }, 'input']">
+    <div v-animated-placeholder="model" :class="[{ disabled: isDisabled, error: errorMsg }, 'input']">
       <input v-model="model" :type="props.type" :placeholder="placeholderType" :disabled="isDisabled" />
       <span v-if="props.isPlaceholderAnimated">{{ props.placeholder }}</span>
     </div>
@@ -62,16 +62,6 @@ const placeholderType = computed(() => (props.isPlaceholderAnimated ? undefined 
     }
   }
 
-  &.error {
-    outline: 1px solid var(--error-color);
-    color: var(--error-color);
-    border: 1px solid var(--error-color);
-
-    input:focus {
-      outline: none;
-    }
-  }
-
   span {
     position: absolute;
     left: 10px;
@@ -106,11 +96,5 @@ const placeholderType = computed(() => (props.isPlaceholderAnimated ? undefined 
     z-index: 0;
     box-sizing: border-box;
   }
-}
-
-.error-msg {
-  display: block;
-  color: var(--error-color);
-  margin-top: 4px;
 }
 </style>
