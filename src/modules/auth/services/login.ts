@@ -10,6 +10,7 @@ export default (body: Body) => {
     url: "/auth/login",
     method: "post",
     data: body,
+    withCredentials: true,
     headers: {
       "Content-Type": "application/json",
     },

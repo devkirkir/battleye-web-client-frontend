@@ -1,43 +1,23 @@
 <script setup lang="ts">
 import UIButton from "@core/components/ui/UIButton.vue";
 import UIInput from "@core/components/ui/UIInput.vue";
-import { reactive, ref } from "vue";
-import api from "@core/services";
+import { reactive } from "vue";
 
-interface Errors {
-  [x: string]: string;
-}
+import useLogin from "../composables/useLogin";
 
 const formData = reactive({
   username: "admin",
   password: "",
 });
 
-const errors = ref<Errors>({});
+const { errors, submit } = useLogin();
 
 const onSubmit = async () => {
-  const res = await api({
-    url: "/auth/login",
-    method: "post",
-    data: formData,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((data) => data)
-    .then((data) => console.log(data));
+  const success = await submit(formData);
 
-  // await res.json().then((data: ResponseError) => {
-  //   if (!data.success) {
-  //     errors.value.form = data.msg;
-
-  //     if (data.errors?.length) {
-  //       data.errors.forEach((error) => {
-  //         errors.value[error.property!] = error.message;
-  //       });
-  //     }
-  //   }
-  // });
+  if (success) {
+    // success login
+  }
 };
 </script>
 

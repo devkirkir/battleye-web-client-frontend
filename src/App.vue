@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { LoginView } from "@auth";
+import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <LoginView />
+  <div>
+    <RouterView />
+  </div>
 </template>
 
 <style scoped></style>
