@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import UIButton from "@core/components/ui/UIButton.vue";
 import UIInput from "@core/components/ui/UIInput.vue";
+import { useUser } from "@user";
 import { reactive } from "vue";
 
 import useLogin from "../composables/useLogin";
 
 const formData = reactive({
-  username: "admin",
+  username: "",
   password: "",
 });
 
@@ -16,7 +17,9 @@ const onSubmit = async () => {
   const success = await submit(formData);
 
   if (success) {
-    // success login
+    const { setUserData } = useUser();
+
+    setUserData({ isAuth: true, userId: success.userId });
   }
 };
 </script>

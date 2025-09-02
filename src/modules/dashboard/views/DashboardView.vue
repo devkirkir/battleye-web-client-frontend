@@ -1,5 +1,9 @@
 <script setup lang="ts"></script>
 
-<template>dashboard</template>
+<template><h1>dashboard</h1></template>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  color: #fff;
+}
+</style>

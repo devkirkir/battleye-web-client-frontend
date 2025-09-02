@@ -1,10 +1,10 @@
 import { AxiosError, type AxiosResponse } from "axios";
-import { type Ref,ref } from "vue";
+import { type Ref, ref } from "vue";
 
 import login from "../services/login";
 
 interface UseLogin {
-  submit: (body: LoginBody) => Promise<boolean | undefined>;
+  submit: (body: LoginBody) => Promise<{ userId: string } | undefined>;
   errors: Ref<Errors>;
 }
 
@@ -27,7 +27,9 @@ function useLogin(): UseLogin {
       const success: AxiosResponse = await login(body);
 
       if (success.status === 200) {
-        return true;
+        return {
+          userId: success.data.data.userId,
+        };
       }
     } catch (error) {
       if (error instanceof AxiosError && error.status === 400) {
