@@ -1,10 +1,12 @@
 import { AxiosError, type AxiosResponse } from "axios";
 import { type Ref, ref } from "vue";
 
+import { useUser } from "@/modules/user";
+
 import login from "../services/login";
 
 interface UseLogin {
-  submit: (body: LoginBody) => Promise<{ userId: string } | undefined>;
+  submit: (body: LoginBody) => Promise<true | void>;
   errors: Ref<Errors>;
 }
 
@@ -27,12 +29,17 @@ function useLogin(): UseLogin {
       const success: AxiosResponse = await login(body);
 
       if (success.status === 200) {
-        return {
-          userId: success.data.data.userId,
-        };
+        const userId = success.data.data.userId;
+        const { setUserData } = useUser();
+
+        setUserData({ isAuth: true, userId });
+
+        window.localStorage.setItem("userId", userId);
+
+        return true;
       }
     } catch (error) {
-      if (error instanceof AxiosError && error.status === 400) {
+      if (error instanceof AxiosError && (error.status === 400 || error.status === 401)) {
         const data: ResponseError = error.response?.data,
           errorMessage = data.msg,
           errorsArray = data.errors;

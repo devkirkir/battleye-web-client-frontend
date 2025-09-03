@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import UIButton from "@core/components/ui/UIButton.vue";
 import UIInput from "@core/components/ui/UIInput.vue";
-import { useUser } from "@user";
 import { reactive } from "vue";
+
+import router from "@/router";
 
 import useLogin from "../composables/useLogin";
 
@@ -17,9 +18,7 @@ const onSubmit = async () => {
   const success = await submit(formData);
 
   if (success) {
-    const { setUserData } = useUser();
-
-    setUserData({ isAuth: true, userId: success.userId });
+    router.push("/dashboard");
   }
 };
 </script>
