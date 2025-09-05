@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => {
       alias: {
         "@": fileURLToPath(new URL("./src", import.meta.url)),
         "@core": fileURLToPath(new URL("./src/core", import.meta.url)),
+        "@auth": fileURLToPath(new URL("./src/auth", import.meta.url)),
         "@user": fileURLToPath(new URL("./src/modules/user", import.meta.url)),
         "@login": fileURLToPath(new URL("./src/modules/login", import.meta.url)),
         "@dashboard": fileURLToPath(new URL("./src/modules/dashboard", import.meta.url)),

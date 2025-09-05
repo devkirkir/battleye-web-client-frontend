@@ -14,6 +14,7 @@
     "paths": {
       "@/*": ["./*"],
       "@core/*": ["core/*"],
+      "@auth": ["modules/auth/index.ts"],
       "@user": ["modules/user/index.ts"],
       "@login": ["modules/login/index.ts"],
       "@dashboard": ["modules/dashboard/index.ts"]

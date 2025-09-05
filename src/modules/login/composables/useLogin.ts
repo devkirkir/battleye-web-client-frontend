@@ -1,6 +1,7 @@
 import { AxiosError, type AxiosResponse } from "axios";
 import { type Ref, ref } from "vue";
 
+import { useAuth } from "@/modules/auth";
 import { useUser } from "@/modules/user";
 
 import login from "../services/login";
@@ -30,11 +31,12 @@ function useLogin(): UseLogin {
 
       if (success.status === 200) {
         const userId = success.data.data.userId;
-        const { setUserData } = useUser();
 
-        setUserData({ isAuth: true, userId });
+        const { setAuth } = useAuth();
+        const { setUser } = useUser();
 
-        window.localStorage.setItem("userId", userId);
+        setAuth(userId);
+        setUser({ userId });
 
         return true;
       }

@@ -2,7 +2,7 @@ import { DashboardView } from "@dashboard";
 import { LoginView } from "@login";
 import { createRouter, createWebHistory } from "vue-router";
 
-import { useUser } from "@/modules/user";
+import { useAuth } from "@/modules/auth";
 
 // TODO типизация
 
@@ -18,8 +18,10 @@ const router = createRouter({
 });
 
 router.beforeEach((to) => {
-  const { userData } = useUser();
-  const isAuth = userData.value.isAuth;
+  const { authData, checkAuth } = useAuth();
+  const isAuth = authData.value.isAuth;
+
+  checkAuth();
 
   if (to.path === "/login" && isAuth) return false;
 

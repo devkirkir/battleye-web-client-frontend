@@ -2,26 +2,24 @@ import type { Ref } from "vue";
 import { ref } from "vue";
 
 interface UseUser {
-  setUserData: (data: UserData) => void;
-  userData: Ref<UserData>;
+  user: Ref<User>;
+  setUser: (data: User) => void;
 }
 
-interface UserData {
-  isAuth: boolean;
+interface User {
   userId: string | null;
 }
 
 function useUser(): UseUser {
-  const userData = ref<UserData>({
-    isAuth: false,
+  const user = ref<User>({
     userId: null,
   });
 
-  const setUserData = (data: UserData) => {
-    userData.value = data;
+  const setUser = (data: User) => {
+    user.value = data;
   };
 
-  return { userData, setUserData };
+  return { user, setUser };
 }
 
 export default useUser;
